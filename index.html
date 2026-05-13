@@ -287,11 +287,15 @@
 </div>
 <script>
 (function () {
-  fetch('https://api.github.com/repos/hibellayu/bella-resume/commits?path=zh/index.html&per_page=1')
+  fetch('https://api.github.com/repos/hibellayu/bella-resume/commits?path=zh/index.html&per_page=20')
     .then(function (r) { return r.json(); })
     .then(function (data) {
-      if (!data || !data[0]) return;
-      var d = new Date(data[0].commit.author.date);
+      if (!data || !data.length) return;
+      var found = data.find(function (c) {
+        return c.commit && c.commit.message && c.commit.message.indexOf('update:') === 0;
+      });
+      if (!found) return;
+      var d = new Date(found.commit.author.date);
       var parts = new Intl.DateTimeFormat('en', {
         timeZone: 'Asia/Taipei',
         year: 'numeric', month: '2-digit', day: '2-digit',
