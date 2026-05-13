@@ -141,7 +141,7 @@
     a { color: inherit; text-decoration: none; }
     .section { page-break-inside: avoid; }
     .hl-card { border-color: #ddd; }
-    #_ec, #_es, #edb, #ebar { display: none !important; }
+    #bella-edit-btn, #_ec, #_es { display: none !important; }
   }
 </style>
 </head>
@@ -299,6 +299,7 @@
   function init() {
     btn = document.createElement('button');
     btn.textContent = '✏️ 編輯';
+    btn.id = 'bella-edit-btn';
     btn.style.cssText = 'position:fixed;bottom:24px;right:24px;background:#111;color:#fff;border:none;padding:9px 18px;border-radius:20px;font-size:12.5px;cursor:pointer;z-index:999;font-family:inherit;opacity:0.12;transition:opacity .25s';
     btn.onmouseenter = function(){ btn.style.opacity='1'; };
     btn.onmouseleave = function(){ if(!isEdit) btn.style.opacity='0.12'; };
