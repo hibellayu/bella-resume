@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>黃于芹 Bella Huang — Executive Profile</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    font-size: 13px;
+    line-height: 1.65;
+    color: #1a1a1a;
+    background: #fff;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 52px 56px;
+  }
+
+  .back-link {
+    display: inline-block; font-size: 11.5px; color: #999;
+    text-decoration: none; letter-spacing: 0.5px; margin-bottom: 32px; transition: color 0.2s;
+  }
+  .back-link:hover { color: #333; }
+
+  .header {
+    border-bottom: 2px solid #1a1a1a;
+    padding-bottom: 14px;
+    margin-bottom: 20px;
+  }
+
+  .header-top { display: flex; justify-content: space-between; align-items: flex-start; }
+
+  .name { font-size: 26px; font-weight: 700; letter-spacing: 2px; color: #111; }
+  .name span { font-size: 16px; font-weight: 400; letter-spacing: 1px; margin-left: 10px; color: #444; }
+
+  .target-role {
+    text-align: right;
+    font-size: 11.5px;
+    color: #2b5ce6;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding-top: 4px;
+  }
+
+  .tagline {
+    font-size: 11.5px; color: #555; letter-spacing: 1.5px;
+    text-transform: uppercase; margin-top: 6px; margin-bottom: 10px;
+  }
+
+  .contact { font-size: 12px; color: #444; display: flex; gap: 20px; flex-wrap: wrap; }
+  .contact a { color: #444; text-decoration: none; }
+
+  .section { margin-bottom: 20px; }
+
+  .section-title {
+    font-size: 10.5px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: #888;
+    border-bottom: 1px solid #ddd; padding-bottom: 4px; margin-bottom: 12px;
+  }
+
+  /* 亮點數字卡片 */
+  .highlights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 0;
+  }
+
+  .hl-card {
+    border: 1px solid #e8e6e1;
+    border-radius: 6px;
+    padding: 14px 16px;
+    text-align: center;
+  }
+
+  .hl-num {
+    font-size: 22px;
+    font-weight: 700;
+    color: #111;
+    letter-spacing: -0.5px;
+  }
+
+  .hl-label {
+    font-size: 11px;
+    color: #888;
+    margin-top: 3px;
+    line-height: 1.5;
+  }
+
+  /* Summary */
+  .summary p { font-size: 12.5px; color: #333; line-height: 1.8; }
+
+  /* Skills */
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 30px; }
+  .skill-item { display: flex; align-items: flex-start; gap: 6px; font-size: 12.5px; }
+  .skill-item::before { content: "▸"; color: #888; flex-shrink: 0; margin-top: 1px; }
+
+  /* Jobs */
+  .job { margin-bottom: 16px; }
+  .job-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 3px; }
+  .job-title { font-weight: 700; font-size: 13px; color: #111; }
+  .job-date { font-size: 11.5px; color: #777; white-space: nowrap; margin-left: 12px; }
+  .job-company { font-size: 12px; color: #555; margin-bottom: 6px; }
+
+  .job ul { padding-left: 14px; list-style: none; }
+  .job ul li {
+    position: relative; padding-left: 12px;
+    font-size: 12.5px; color: #333; margin-bottom: 4px; line-height: 1.65;
+  }
+  .job ul li::before {
+    content: "·"; position: absolute; left: 0;
+    color: #aaa; font-size: 14px; line-height: 1.5;
+  }
+
+  /* Early career compact */
+  .early-row { display: flex; gap: 10px; font-size: 12px; padding: 4px 0; border-bottom: 1px solid #f0f0f0; }
+  .early-row:last-child { border-bottom: none; }
+  .early-co { width: 120px; font-weight: 600; color: #444; flex-shrink: 0; }
+  .early-desc { color: #666; }
+
+  /* Career intention box */
+  .intention-box {
+    background: #f7f6f3;
+    border-left: 3px solid #2b5ce6;
+    padding: 14px 18px;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .intention-box p { font-size: 12.5px; color: #333; line-height: 1.75; }
+  .intention-box .intention-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+    color: #2b5ce6; text-transform: uppercase; margin-bottom: 6px;
+  }
+
+  @media print {
+    body { padding: 36px 44px; font-size: 12.5px; }
+    .back-link { display: none; }
+    .name { font-size: 24px; }
+    a { color: inherit; text-decoration: none; }
+    .section { page-break-inside: avoid; }
+    .hl-card { border-color: #ddd; }
+  }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="../">← 返回版本列表</a>
+
+<div class="header">
+  <div class="header-top">
+    <div class="name">黃于芹 <span>Bella Huang</span></div>
+    <div class="target-role">目標職位：行銷總監 / Senior Marketing Manager</div>
+  </div>
+  <div class="tagline">Brand Strategy · Integrated Marketing · Cross-functional Leadership</div>
+  <div class="contact">
+    <span>bella.lomo@gmail.com</span>
+    <span>0935-777-822</span>
+    <span>台北 · 即可上班</span>
+  </div>
+</div>
+
+<!-- 亮點數字 -->
+<div class="section">
+  <div class="section-title">At a Glance 關鍵數字</div>
+  <div class="highlights">
+    <div class="hl-card">
+      <div class="hl-num">15+</div>
+      <div class="hl-label">年整合行銷<br>資歷</div>
+    </div>
+    <div class="hl-card">
+      <div class="hl-num">1,000萬</div>
+      <div class="hl-label">年度媒體預算<br>統籌規模</div>
+    </div>
+    <div class="hl-card">
+      <div class="hl-num">100+</div>
+      <div class="hl-label">數位創作者<br>合作管理</div>
+    </div>
+  </div>
+</div>
+
+<!-- Executive Summary -->
+<div class="section summary">
+  <div class="section-title">Executive Summary</div>
+  <p>
+    15 年行銷資歷，橫跨品牌端、代理商、媒體與平台型產品，擁有從策略規劃到跨部門執行落地的完整鏈路能力。最近四年於 HUAWEI 台灣擔任數位行銷經理，在品牌競爭條件高度受限的環境中，統籌近 1,000 萬年度預算、主導百位以上創作者生態合作，持續為多條產品線建立清晰的市場溝通節奏。
+  </p>
+  <br>
+  <p>
+    強項在於能從商業目標反推策略優先序，在複雜的跨部門環境中建立共識並推動專案落地；同時具備從 0→1 建立框架的能力，擅長在資源有限的條件下找到高效的整合路徑。
+  </p>
+</div>
+
+<!-- 職涯意圖 -->
+<div class="section">
+  <div class="section-title">Career Intention 職涯方向</div>
+  <div class="intention-box">
+    <div class="intention-label">Open to Opportunities</div>
+    <p>
+      下一階段目標鎖定更進階的策略整合與跨部門領導角色——行銷總監、Senior Marketing Manager 或品牌策略主管。希望投入具規模的組織，以整合行銷策略思維協助品牌建立長期市場影響力，尤其對科技、消費電子、平台型產品或 AI 相關產業有高度興趣。
+    </p>
+  </div>
+</div>
+
+<!-- 核心能力 -->
+<div class="section">
+  <div class="section-title">Core Competencies 核心能力</div>
+  <div class="skills-grid">
+    <div class="skill-item">整合行銷策略：從市場目標出發規劃全通路溝通節奏</div>
+    <div class="skill-item">預算規劃與資源配置：多產品線年度預算統籌與優先序管理</div>
+    <div class="skill-item">跨部門推進能力：在高變動環境中建立共識並驅動落地</div>
+    <div class="skill-item">創作者生態管理：百人級規模合作流程建立與成效追蹤</div>
+    <div class="skill-item">品牌溝通策略：以使用情境為核心，規劃產品上市溝通方向</div>
+    <div class="skill-item">AI 協作工作流：應用 AI 提升策略決策與溝通效率</div>
+  </div>
+</div>
+
+<!-- 工作經歷 -->
+<div class="section">
+  <div class="section-title">Work Experience 工作經歷</div>
+
+  <div class="job">
+    <div class="job-header">
+      <div class="job-title">數位行銷經理</div>
+      <div class="job-date">2022.03 – 2026.04</div>
+    </div>
+    <div class="job-company">HUAWEI 台灣（訊崴技術）· 智慧穿戴、音頻、平板產品線</div>
+    <ul>
+      <li><strong>預算統籌：</strong>主導年度媒體與社群預算近 1,000 萬，跨多條產品線規劃資源配置與市場溝通節奏。</li>
+      <li><strong>創作者生態：</strong>建立百位以上數位創作者分眾合作機制，整合代理商協作，建立選角→腳本→成效追蹤的完整流程。</li>
+      <li><strong>整合行銷：</strong>在品牌條件受限的環境中，整合內容、SEO、媒體購買與電商節奏，持續提升年輕族群對產品的關注與討論度。</li>
+      <li><strong>跨部門推進：</strong>協調產品、電商、官網與代理商多方資源，推動新品上市整合溝通落地。</li>
+      <li><strong>AI 應用：</strong>建立 AI 協作工作流，縮短內容策略提案與跨部門對齊週期，提升團隊執行效率。</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-header">
+      <div class="job-title">行銷企劃經理</div>
+      <div class="job-date">2019.05 – 2020.06</div>
+    </div>
+    <div class="job-company">寵聚股份有限公司 · 寵物醫療平台與 APP</div>
+    <ul>
+      <li>參與平台從 0→1 的商業模式規劃，串接醫院系統、保健內容與電商服務，建立內容導向的使用者接觸架構。</li>
+      <li>規劃 APP 使用者旅程與會員互動機制，累積平台型產品成長思維與 CRM 經驗。</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-header">
+      <div class="job-title">品牌專案經理</div>
+      <div class="job-date">2016.11 – 2019.04</div>
+    </div>
+    <div class="job-company">頂呱呱股份有限公司 · 品牌年輕化與數位轉型</div>
+    <ul>
+      <li>主導品牌年輕化數位轉型，重建面向年輕族群的內容語言與市場溝通策略。</li>
+      <li>主導官網改版與 SEO 架構優化，提升品牌資訊接觸效率；規劃「炸雞花」等創意聲量專案。</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 早期經歷 -->
+<div class="section">
+  <div class="section-title">Earlier Career 早期經歷</div>
+  <div class="early-row">
+    <div class="early-co">酷瞧新媒體</div>
+    <div class="early-desc">OTT 平台 0→1 數位推廣與內容營運架構建立，整合社群與流量策略</div>
+  </div>
+  <div class="early-row">
+    <div class="early-co">鼎鼎聯合行銷</div>
+    <div class="early-desc">會員經濟與點數整合行銷，CRM 與消費者生命週期經營</div>
+  </div>
+  <div class="early-row">
+    <div class="early-co">MIGO 功典資訊</div>
+    <div class="early-desc">B2B MarTech 市場教育與 solution-based marketing</div>
+  </div>
+  <div class="early-row">
+    <div class="early-co">三星鵬泰顧問</div>
+    <div class="early-desc">Samsung Camera、Yahoo! Mobile 品牌整合行銷，多品牌代理商協作</div>
+  </div>
+  <div class="early-row">
+    <div class="early-co">東森得意購</div>
+    <div class="early-desc">電商平台會員與行銷模組規劃，消費者體驗流程設計</div>
+  </div>
+</div>
+
+</body>
+</html>
