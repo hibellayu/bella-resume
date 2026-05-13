@@ -28,6 +28,21 @@
     border-bottom: 2px solid #1a1a1a;
     padding-bottom: 14px;
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .header-info { flex: 1; }
+
+  .profile-photo {
+    width: 82px;
+    height: 90px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 5px;
+    flex-shrink: 0;
   }
 
   .header-top { display: flex; justify-content: space-between; align-items: flex-start; }
@@ -137,12 +152,14 @@
   @page { size: A4; margin: 1.4cm 1.3cm; }
 
   @media print {
-    body { padding: 0; margin: 0; font-size: 12.5px; }
+    html, body { padding: 0; margin: 0; max-width: 100%; width: 100%; font-size: 12px; }
     .back-link { display: none; }
-    .name { font-size: 24px; }
+    .name { font-size: 22px; }
     a { color: inherit; text-decoration: none; }
-    .section { page-break-inside: avoid; }
+    .section { margin-bottom: 14px; }
     .section:last-child { margin-bottom: 0; }
+    .job { page-break-inside: avoid; margin-bottom: 12px; }
+    .job:last-child { margin-bottom: 0; }
     .hl-card { border-color: #ddd; }
     #bella-edit-btn, #_ec, #_es { display: none !important; }
   }
@@ -153,16 +170,19 @@
 <a class="back-link" href="../">← 返回版本列表</a>
 
 <div class="header">
-  <div class="header-top">
-    <div class="name">黃于芹 <span>Bella Huang</span></div>
-    <div class="target-role">目標職位：行銷總監 / Senior Marketing Manager</div>
+  <div class="header-info">
+    <div class="header-top">
+      <div class="name">黃于芹 <span>Bella Huang</span></div>
+      <div class="target-role">目標職位：行銷總監 / Senior Marketing Manager</div>
+    </div>
+    <div class="tagline">Brand Strategy · Integrated Marketing · Cross-functional Leadership</div>
+    <div class="contact">
+      <span>bella.lomo@gmail.com</span>
+      <span>0935-777-822</span>
+      <span>台北 · 即可上班</span>
+    </div>
   </div>
-  <div class="tagline">Brand Strategy · Integrated Marketing · Cross-functional Leadership</div>
-  <div class="contact">
-    <span>bella.lomo@gmail.com</span>
-    <span>0935-777-822</span>
-    <span>台北 · 即可上班</span>
-  </div>
+  <img class="profile-photo" src="../assets/bella-photo.png" alt="Bella Huang">
 </div>
 
 <!-- 亮點數字 -->
