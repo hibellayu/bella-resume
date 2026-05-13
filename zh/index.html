@@ -214,5 +214,125 @@
   </table>
 </div>
 
+
+<!-- ✏️ 線上編輯功能 -->
+<script>
+(function(){
+  'use strict';
+  var CFG = { owner:'hibellayu', repo:'bella-resume', path:'zh/index.html', branch:'main' };
+  var SEL = '.summary p, .job-title, .job-company, .job-date, .job ul li, .skill-item, .early-table .co, .early-table .desc';
+  var TK = 'bella_gh_token';
+  var bar, btn, isEdit = false;
+
+  function init() {
+    btn = document.createElement('button');
+    btn.textContent = '✏️ 編輯';
+    btn.style.cssText = 'position:fixed;bottom:24px;right:24px;background:#111;color:#fff;border:none;padding:9px 18px;border-radius:20px;font-size:12.5px;cursor:pointer;z-index:999;font-family:inherit;opacity:0.12;transition:opacity .25s';
+    btn.onmouseenter = function(){ btn.style.opacity='1'; };
+    btn.onmouseleave = function(){ if(!isEdit) btn.style.opacity='0.12'; };
+    btn.onclick = function(){ isEdit ? doCancel() : doStart(); };
+
+    bar = document.createElement('div');
+    bar.style.cssText = 'display:none;position:fixed;bottom:0;left:0;right:0;background:#111;color:#fff;padding:14px 28px;align-items:center;justify-content:space-between;z-index:1000;font-family:inherit;box-shadow:0 -2px 16px rgba(0,0,0,.2)';
+    bar.innerHTML = '<span style="font-size:12.5px;opacity:.65">✏️ 編輯模式 — 點擊任何文字即可修改</span>'
+      + '<div style="display:flex;gap:10px">'
+      + '<button id="_ec" style="background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff;padding:7px 16px;border-radius:4px;cursor:pointer;font-family:inherit;font-size:12.5px">取消</button>'
+      + '<button id="_es" style="background:#fff;border:none;color:#111;padding:7px 20px;border-radius:4px;cursor:pointer;font-family:inherit;font-size:12.5px;font-weight:600">儲存</button>'
+      + '</div>';
+
+    document.body.append(btn, bar);
+    document.getElementById('_ec').onclick = doCancel;
+    document.getElementById('_es').onclick = doSave;
+  }
+
+  function doStart() {
+    isEdit = true;
+    bar.style.display = 'flex';
+    btn.style.opacity = '0'; btn.style.pointerEvents = 'none';
+    document.querySelectorAll(SEL).forEach(function(el){
+      el.contentEditable = 'true';
+      el.style.outline = '2px dashed rgba(43,92,230,.35)';
+      el.style.borderRadius = '3px';
+    });
+  }
+
+  function doCancel() {
+    isEdit = false;
+    bar.style.display = 'none';
+    btn.style.opacity = '0.12'; btn.style.pointerEvents = 'auto';
+    document.querySelectorAll('[contenteditable]').forEach(function(el){
+      el.removeAttribute('contenteditable');
+      el.style.outline = ''; el.style.borderRadius = '';
+    });
+  }
+
+  async function doSave() {
+    var token = localStorage.getItem(TK);
+    if (!token) {
+      token = prompt(
+        '第一次使用：請輸入 GitHub Personal Access Token\n\n'
+        + '建立步驟：\n'
+        + '1. 前往 github.com → Settings → Developer settings\n'
+        + '2. Personal access tokens → Fine-grained tokens → Generate new token\n'
+        + '3. Repository access 選 bella-resume，權限開 Contents: Read & Write\n\n'
+        + '輸入後會記住，之後不用再輸入'
+      );
+      if (!token) return;
+      token = token.trim();
+      localStorage.setItem(TK, token);
+    }
+
+    var sb = document.getElementById('_es');
+    sb.textContent = '儲存中⋯'; sb.disabled = true;
+
+    try {
+      // 移除編輯狀態，暫時拆掉 UI，取得乾淨 HTML
+      document.querySelectorAll('[contenteditable]').forEach(function(el){
+        el.removeAttribute('contenteditable');
+        el.style.outline = ''; el.style.borderRadius = '';
+      });
+      bar.remove(); btn.remove();
+      var html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+      document.body.append(btn, bar);
+      bar.style.display = 'flex';
+      document.querySelectorAll(SEL).forEach(function(el){
+        el.contentEditable = 'true';
+        el.style.outline = '2px dashed rgba(43,92,230,.35)';
+        el.style.borderRadius = '3px';
+      });
+
+      // 取得目前檔案 SHA
+      var r1 = await fetch('https://api.github.com/repos/'+CFG.owner+'/'+CFG.repo+'/contents/'+CFG.path, {
+        headers: { Authorization: 'token '+token, Accept: 'application/vnd.github.v3+json' }
+      });
+      if (r1.status === 401) { localStorage.removeItem(TK); throw new Error('Token 無效，請重新輸入'); }
+      if (!r1.ok) throw new Error('讀取失敗 ('+r1.status+')');
+      var sha = (await r1.json()).sha;
+
+      // UTF-8 → base64
+      var bytes = new TextEncoder().encode(html);
+      var bin = ''; bytes.forEach(function(b){ bin += String.fromCharCode(b); });
+      var content = btoa(bin);
+
+      // Commit
+      var r2 = await fetch('https://api.github.com/repos/'+CFG.owner+'/'+CFG.repo+'/contents/'+CFG.path, {
+        method: 'PUT',
+        headers: { Authorization: 'token '+token, Accept: 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: 'update: 一般版履歷', content: content, sha: sha, branch: CFG.branch })
+      });
+      if (!r2.ok) throw new Error('儲存失敗 ('+r2.status+')');
+
+      sb.textContent = '✓ 已儲存！'; sb.style.background = '#22c55e'; sb.style.color = '#fff';
+      setTimeout(function(){ doCancel(); sb.textContent = '儲存'; sb.style.background = '#fff'; sb.style.color = '#111'; sb.disabled = false; }, 2500);
+
+    } catch(e) {
+      sb.textContent = '儲存'; sb.disabled = false;
+      alert('⚠️ ' + e.message);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', init);
+})();
+</script>
 </body>
 </html>
