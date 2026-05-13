@@ -265,7 +265,12 @@
     btn.style.cssText = 'position:fixed;bottom:24px;right:24px;background:#111;color:#fff;border:none;padding:9px 18px;border-radius:20px;font-size:12.5px;cursor:pointer;z-index:999;font-family:inherit;opacity:0.12;transition:opacity .25s';
     btn.onmouseenter = function(){ btn.style.opacity='1'; };
     btn.onmouseleave = function(){ if(!isEdit) btn.style.opacity='0.12'; };
-    btn.onclick = function(){ isEdit ? doCancel() : doStart(); };
+    btn.onclick = function(){
+      if (isEdit) { doCancel(); return; }
+      var pw = prompt('請輸入編輯密碼');
+      if (pw !== 'bella1218') { if (pw !== null) alert('密碼錯誤'); return; }
+      doStart();
+    };
 
     bar = document.createElement('div');
     bar.style.cssText = 'display:none;position:fixed;bottom:0;left:0;right:0;background:#111;color:#fff;padding:14px 28px;align-items:center;justify-content:space-between;z-index:1000;font-family:inherit;box-shadow:0 -2px 16px rgba(0,0,0,.2)';
