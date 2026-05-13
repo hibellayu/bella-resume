@@ -96,6 +96,8 @@
     transition: color 0.2s;
   }
   .pdf-shortcut a:hover { color: #555; }
+  .pdf-sep { color: #ddd; margin: 0 8px; }
+  .resume-updated { font-size: 11px; color: #bbb; letter-spacing: 0.3px; }
 
   .card {
     background: #fff;
@@ -270,6 +272,8 @@
 
   <div class="pdf-shortcut">
     <a href="assets/黃于芹_履歷_2026.pdf" download="黃于芹_BellaHuang_Resume_2026.pdf">↓ 直接下載 PDF</a>
+    <span class="pdf-sep">·</span>
+    <span class="resume-updated" id="resume-updated">載入中⋯</span>
   </div>
 
   <div class="built-with">
@@ -281,5 +285,29 @@
 
   <div class="footer">15+ years · Digital Marketing · Brand Strategy · hibellayu.github.io/bella-resume</div>
 </div>
+<script>
+(function () {
+  fetch('https://api.github.com/repos/hibellayu/bella-resume/commits?path=zh/index.html&per_page=1')
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      if (!data || !data[0]) return;
+      var d = new Date(data[0].commit.author.date);
+      var parts = new Intl.DateTimeFormat('en', {
+        timeZone: 'Asia/Taipei',
+        year: 'numeric', month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', hour12: false
+      }).formatToParts(d);
+      var p = {};
+      parts.forEach(function (x) { p[x.type] = x.value; });
+      var ts = p.year + '.' + p.month + '.' + p.day + ' ' + p.hour + ':' + p.minute;
+      var el = document.getElementById('resume-updated');
+      if (el) el.textContent = 'Updated｜' + ts;
+    })
+    .catch(function () {
+      var el = document.getElementById('resume-updated');
+      if (el) el.textContent = '';
+    });
+})();
+</script>
 </body>
 </html>
