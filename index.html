@@ -102,7 +102,6 @@
   }
 
   .badge-zh    { background: #111; color: #fff; }
-  .badge-hunt  { background: #2b5ce6; color: #fff; }
   .badge-en    { background: #6c757d; color: #fff; }
   .badge-files { background: #e8e6e1; color: #555; }
 
@@ -147,6 +146,53 @@
     text-transform: uppercase;
   }
 
+  /* Built with block */
+  .built-with {
+    margin-top: 28px;
+    padding: 20px 24px;
+    background: #fff;
+    border: 1px solid #e8e6e1;
+    border-radius: 8px;
+  }
+
+  .built-with-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 8px;
+  }
+
+  .built-with-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 6px;
+  }
+
+  .built-with-desc {
+    font-size: 12px;
+    color: #888;
+    line-height: 1.7;
+  }
+
+  .built-with-tags {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    font-size: 11px;
+    color: #666;
+    background: #f7f6f3;
+    border: 1px solid #e8e6e1;
+    padding: 3px 9px;
+    border-radius: 20px;
+  }
+
   /* Footer */
   .footer {
     text-align: center;
@@ -170,17 +216,10 @@
   </div>
 
   <div class="cards">
-    <a class="card" href="zh/">
+    <a class="card card-full" href="zh/">
       <div class="card-badge badge-zh">中文版</div>
-      <div class="card-title">一般履歷</div>
-      <div class="card-desc">適合台灣本地 HR、主動投遞使用。完整工作經歷與核心能力條列。</div>
-      <div class="card-arrow">→</div>
-    </a>
-
-    <a class="card" href="headhunter/">
-      <div class="card-badge badge-hunt">獵頭版</div>
-      <div class="card-title">Executive 版本</div>
-      <div class="card-desc">強調策略領導力與預算規模，適合獵頭與 Director 以上職缺。</div>
+      <div class="card-title">履歷</div>
+      <div class="card-desc">完整工作經歷、核心能力與專案成果。適合台灣本地 HR 及主動投遞情境。</div>
       <div class="card-arrow">→</div>
     </a>
 
@@ -197,6 +236,21 @@
       <div class="card-desc">PDF、DOCX 原始檔下載，供需要附件的投遞情境使用。</div>
       <div class="card-arrow">→</div>
     </a>
+  </div>
+
+  <div class="built-with">
+    <div class="built-with-label">How this was built</div>
+    <div class="built-with-title">Built with Claude Code</div>
+    <div class="built-with-desc">
+      這個網站是個人 AI 協作工作流的實際應用——使用 Claude Code 完成多版本履歷管理、自動化 PDF 生成、線上編輯與 GitHub Pages 部署，從需求到上線不需要工程師介入。
+    </div>
+    <div class="built-with-tags">
+      <span class="tag">Claude Code</span>
+      <span class="tag">GitHub Pages</span>
+      <span class="tag">版本管理</span>
+      <span class="tag">PDF 自動生成</span>
+      <span class="tag">線上編輯</span>
+    </div>
   </div>
 
   <div class="footer">15+ years · Digital Marketing · Brand Strategy · hibellayu.github.io/bella-resume</div>
