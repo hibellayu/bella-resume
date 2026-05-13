@@ -63,6 +63,7 @@
   }
 
   .file-meta { font-size: 11.5px; color: #999; }
+  .file-updated { font-size: 11px; color: #bbb; margin-top: 3px; }
 
   .file-btn {
     display: inline-block;
@@ -100,6 +101,7 @@
     <div class="file-info">
       <div class="file-name">黃于芹_履歷_2026.pdf</div>
       <div class="file-meta">中文版 · 適合台灣本地 HR 投遞</div>
+      <div class="file-updated" id="pdf-zh-updated">最後更新：載入中⋯</div>
     </div>
     <a class="file-btn" href="../assets/黃于芹_履歷_2026.pdf" download>下載 PDF</a>
   </li>
@@ -110,5 +112,31 @@
   需要其他格式或最新版本？請聯繫 <a href="mailto:bella.lomo@gmail.com">bella.lomo@gmail.com</a>
 </div>
 
+<script>
+(function () {
+  var files = [
+    { id: 'pdf-zh-updated', path: 'assets/%E9%BB%83%E4%BA%8E%E8%8A%B9_%E5%B1%A5%E6%AD%B7_2026.pdf' },
+  ];
+  files.forEach(function (f) {
+    fetch('https://api.github.com/repos/hibellayu/bella-resume/commits?path=' + f.path + '&per_page=1')
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (!data || !data[0]) return;
+        var d = new Date(data[0].commit.author.date);
+        var ts = new Intl.DateTimeFormat('zh-TW', {
+          timeZone: 'Asia/Taipei',
+          year: 'numeric', month: 'long', day: 'numeric',
+          hour: 'numeric', hour12: false
+        }).format(d);
+        var el = document.getElementById(f.id);
+        if (el) el.textContent = '最後更新：' + ts;
+      })
+      .catch(function () {
+        var el = document.getElementById(f.id);
+        if (el) el.textContent = '';
+      });
+  });
+})();
+</script>
 </body>
 </html>
