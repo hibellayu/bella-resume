@@ -115,6 +115,7 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
 
   @page { size: A4; margin: 1.4cm 1.3cm; }
 
+  #pdf-timestamp { display: none; }
   @media print {
     html, body { padding: 0; margin: 0; max-width: 100%; width: 100%; font-size: 12px; }
     .back-link { display: none; }
@@ -125,6 +126,15 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
     .job { page-break-inside: avoid; margin-bottom: 12px; }
     .job:last-child { margin-bottom: 0; }
     #bella-edit-btn, #_ec, #_es { display: none !important; }
+    #pdf-timestamp {
+      display: block;
+      font-size: 9.5px;
+      color: #bbb;
+      text-align: right;
+      padding-top: 10px;
+      border-top: 1px solid #eee;
+      margin-top: 18px;
+    }
   }
 </style>
 <style id="monica-reading-highlight-style">
@@ -258,6 +268,8 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
   </tbody></table>
 </div>
 
+
+<div id="pdf-timestamp"></div>
 
 <!-- ✏️ 線上編輯功能 -->
 <script>
