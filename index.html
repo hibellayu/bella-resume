@@ -77,7 +77,25 @@
     margin-bottom: 14px;
   }
 
-  .card-full { grid-column: 1 / -1; }
+  .card-full {
+    grid-column: 1 / -1;
+    border-color: #c8c5bf;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .pdf-shortcut {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 8px;
+  }
+  .pdf-shortcut a {
+    font-size: 11.5px;
+    color: #aaa;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    transition: color 0.2s;
+  }
+  .pdf-shortcut a:hover { color: #555; }
 
   .card {
     background: #fff;
@@ -240,33 +258,24 @@
       <div class="card-arrow">→</div>
     </a>
 
+    <!-- English version: restore when ready
     <a class="card card-coming" href="en/">
       <div class="card-badge badge-en">English</div>
       <div class="card-title">English Version</div>
       <div class="card-desc">Professional profile for international recruiters, regional roles, and cross-functional opportunities.</div>
       <div class="coming-label">Coming Soon</div>
     </a>
+    -->
+  </div>
 
-    <a class="card" href="files/">
-      <div class="card-badge badge-files">PDF</div>
-      <div class="card-title">履歷檔案下載</div>
-      <div class="card-desc">PDF 版本下載，適用於職缺投遞、獵頭分享與正式申請。</div>
-      <div class="card-arrow">→</div>
-    </a>
+  <div class="pdf-shortcut">
+    <a href="assets/黃于芹_履歷_2026.pdf" download="黃于芹_BellaHuang_Resume_2026.pdf">↓ 直接下載 PDF</a>
   </div>
 
   <div class="built-with">
     <div class="built-with-label">About This Site</div>
-    <div class="built-with-title">AI Workflow & Resume System</div>
     <div class="built-with-desc">
-      這個網站是個人 AI 協作 workflow 的實際應用，結合履歷版本管理、線上編輯與 GitHub Pages 部署，體現策略型行銷人善用 AI 工具的工作方式。
-    </div>
-    <div class="built-with-tags">
-      <span class="tag">AI Workflow</span>
-      <span class="tag">版本管理</span>
-      <span class="tag">PDF 自動生成</span>
-      <span class="tag">線上編輯</span>
-      <span class="tag">GitHub Pages</span>
+      這個網站是個人 AI 協作 workflow 的實際應用，結合履歷管理、線上編輯與版本控制。
     </div>
   </div>
 
